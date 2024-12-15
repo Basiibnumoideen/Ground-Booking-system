@@ -1,0 +1,59 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns="http://www.w3.org/1999/html">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" >
+    {% csrf_token %}
+  <a href="{% url 'addbatch' %}" style="position: fixed; top:80px; left: 270px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+add
+</span></a><br><br>
+  <table  border="4" style="align: center;" >
+    <tr>
+      <td>Batch Type</td>
+      <td><select id="batchtype" name="batchtype">
+        <option>ALL</option>
+        {% for j in list1 %}
+        <option value="{{ j.id }}">{{ j.item_name }}</option>
+        {% endfor %}
+      </select></td>
+      <td><input type="submit" value="SEARCH" /></td>
+    </tr>
+  </table></br></br>
+<table width="1150" height="150"  border="6">
+  <tbody>
+    <tr>
+      <th width="50" scope="col">ID&nbsp;</th>
+      <th width="200" scope="col">BATCH TYPE&nbsp;</th>
+      <th width="200" scope="col">BATCH NAME&nbsp;</th>
+      <th width="400" scope="col">DESCRIPTION&nbsp;</th>
+      <th width="200" scope="col">PAYMENT PER DAY&nbsp;</th>
+      <th width="60" scope="col">&nbsp;</th>
+      <th width="60" scope="col">&nbsp;</th>
+      <th width="60" scope="col">&nbsp;</th>
+    </tr>
+    {% for i in list %}
+    <tr>
+      <td>{{ i.id }}</td>
+      <td>{{ i.batch_type }}</td>
+      <td>{{ i.batchname }}</td>
+      <td>{{ i.description }}</td>
+      <td>{{ i.paymentperday }}</td>
+      <td><a href="{% url 'editbatch' i.id %}">Edit</a></td>
+      <td><a href="{% url 'deletebatch' i.id %}">Delete</a></td>
+      <td><a href="{%  url 'viewbatchtime' i.id i.batch_type %}">ViewTime</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+</form>
+
+</body>
+<!--</html>-->
+{% endblock %}

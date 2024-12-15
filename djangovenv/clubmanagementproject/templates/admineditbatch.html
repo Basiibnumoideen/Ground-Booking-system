@@ -1,0 +1,92 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f7f7f7;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+    }
+
+    .form-group select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .submit-btn {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+ <a href="{% url 'adminbatchlist' %}" style="position: fixed; top:80px; left: 280px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+arrow_back
+</span></a>
+<form action="" method="post">
+    {% csrf_token %}
+    <a href="{% url 'addbatch' %}"></a>
+    <div class="form-group">
+        <label for="{{ form.batch_type.id_for_label }}">Batch Type:</label>
+        {{ form.batch_type }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.batchname.id_for_label }}">Batch Name:</label>
+        {{ form.batchname }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.description.id_for_label }}">Description:</label>
+        {{ form.description }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.paymentperday.id_for_label }}">Payment per day:</label>
+        {{ form.paymentperday }}
+    </div>
+    <input type="submit" name="submit" class="submit-btn" value="Update">
+</form>
+{% endblock %}

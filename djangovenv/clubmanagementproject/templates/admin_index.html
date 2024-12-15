@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Web Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(https://png.pngtree.com/background/20230512/original/pngtree-sport-background-picture-image_2502918.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            background-color: rgba(0,0,0,0.5);
+            color: rgb(244, 243, 243);
+            text-shadow: 6px 6px 3px #1d1d1d;
+            text-align: center;
+            padding: 1em;
+
+        }
+
+        nav {
+            width: 200px;
+            background-color: #f2f2f2b9;
+            padding: 10px;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        nav a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        nav a:hover {
+            background-color: #050505;
+            color: #fff;
+        }
+
+        section {
+            margin-left: 220px;
+            padding: 1em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .profile{
+            border-radius: 50%;
+            border: #000 2px solid;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        .main-body{
+            margin: 30px;
+            padding: 15px;
+            border-radius: 20px;
+            background-color: rgba(0,0,0,0.5);
+        }
+        #submit
+        {
+        width:100px;
+        height:30px;
+        border-radius:20px;
+        border:none;
+        }
+
+        .input{
+        border:solid 2px #fff;
+        border-radius:20px;
+        background-color: transparent;
+        width:200px;
+        height:40px;
+        color: #fff;
+        font-size: 20px;
+        padding:10px;
+        margin-top:30px;
+        }
+
+    th{
+    color:#fff;
+    }
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 8,
+  'wght' 900,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+
+
+</style>
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Club Management System</h1>
+    </header>
+
+    <nav>
+<!--        <img class="profile" src="{{ listx.profileimg.url }}" width="70px" height="70px">-->
+        <a href="{% url 'loadhome' %}">Home</a>
+        <a href="{% url 'adminviewprofile' %}">Profile</a>
+        <a href="{% url 'listmember' %}">View Members</a>
+        <a href="{% url 'viewsportsitem' %}">Sports Item</a>
+        <a href="{% url 'adminviewgallary' %}">Gallary</a>
+        <a href="{% url 'adminbatchlist' %}">Batch</a>
+        <a href="{% url 'adminnewslist' %}">News</a>
+        <a href="{% url 'viewpurpose' %}">Purpose</a>
+        <a href="{% url 'viewgroundbooking' %}">Ground booking</a>
+        <a href="{% url 'registerdbatchlist' %}">Batch register</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+
+    <section>
+        <div class="main-body">
+         {% block body %}
+            {% endblock %}
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2024 Your Website. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

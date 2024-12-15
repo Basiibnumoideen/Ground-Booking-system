@@ -1,0 +1,50 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+<form enctype="multipart/form-data">
+    {%csrf_token%}
+    <table width="523" border="0">
+  <tbody>
+  <tr>
+      <th colspan="2" scope="col"><img src="{{ list.profileimg.url }}" width="150" height="150"/></th>
+      </tr>
+    <tr>
+        <th colspan="2" scope="col"><b><i>{{ list.name }}</i></b></th>
+      </tr>
+     <tr>
+      <td>Club Admin</td>
+      <td>{{list.clubadmin}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{list.emailid}}</td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td>{{list.contactno}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{list.description}}</td>
+    </tr>
+
+    <tr>
+      <td>&nbsp;</td>
+
+    </tr>
+  </tbody>
+    </table>
+      <a href="{% url 'addclubprofile' %}"><span class="material-symbols-outlined">
+edit
+</span></a>
+
+</form>
+</body>
+<!--</html>-->
+{% endblock %}

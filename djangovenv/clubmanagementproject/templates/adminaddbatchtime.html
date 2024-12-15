@@ -1,0 +1,78 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+
+<!--</head>-->
+<body>
+<form method="post" action="">
+    {% csrf_token %}
+   <a href="{% url 'adminbatchlist' %}" style="position: fixed; top:80px; left: 280px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px; margin-left: 30px;"><span class="material-symbols-outlined">
+arrow_back
+</span></a>
+<table>
+    <tr>
+        <th>Batch Type</th>
+        <td>
+            <select id="batchtype" name="batchtype" onchange="updateBatchOptions()">
+                <option>--select--</option>
+                {% for j in list1 %}
+                    <option value="{{ j.id }}">{{ j.item_name }}</option>
+                {% endfor %}
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <th>Batch</th>
+        <td>
+            <select id="batch" name="{{ form.batid.name }}">
+                <!-- Batch options will be populated dynamically using JavaScript -->
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <th>Start Time</th>
+        <td>{{ form.fromtime }}</td>
+    </tr>
+    <tr>
+        <th>End Time</th>
+        <td>{{ form.totime }}</td>
+    </tr>
+    <tr>
+        <th colspan="2"><input type="submit" name="submit" id="submit" value="Submit"></th>
+    </tr>
+</table>
+
+</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+ <script>
+
+        function updateBatchOptions() {
+            var selectedBatchType = $("#batchtype").val();
+            <!--alert(selectedBatchType)-->
+            var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+            var batchDropdown = $("#batch");
+            batchDropdown.empty();
+            $.ajax({
+                url: '/get_batch_options/',
+                method: 'POST',
+                data: {batch_type: selectedBatchType},
+                headers: {'X-CSRFToken': csrftoken},  // Include CSRF token in headers
+                success: function (data) {
+                    $.each(data.batches, function (index, batch) {
+                        batchDropdown.append('<option value="' + batch.id + '">' + batch.item_name + '</option>');
+                    });
+                },
+                error: function () {
+                    alert('Error fetching batch options');
+                }
+            });
+        }
+    </script>
+<!--</html>-->
+
+{% endblock %}

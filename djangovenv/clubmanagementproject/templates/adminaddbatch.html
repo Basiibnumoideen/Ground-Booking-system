@@ -1,0 +1,74 @@
+cd
+
+{% extends 'admin_index.html' %}
+{% block body %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+      <!--{% if messages %}-->
+        <!--<script>-->
+            <!--{% for message in messages %}-->
+                <!--alert("{{ message }}");-->
+            <!--{% endfor %}-->
+        <!--</script>-->
+    <!--{% endif %}-->
+    <!--&lt;!&ndash;{% if messages %}&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<ul class="messages">&ndash;&gt;-->
+    <!--&lt;!&ndash;{% for message in messages %}&ndash;&gt;-->
+      <!--&lt;!&ndash;&lt;!&ndash;<li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>&ndash;&gt;&ndash;&gt;-->
+      <!--&lt;!&ndash;<li>{{ message }}</li>&ndash;&gt;-->
+    <!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+  <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+<!--&lt;!&ndash;{% endif %}&ndash;&gt;-->
+<!--</head>-->
+<body style="text-align: center;" >
+ {% if messages %}
+        <script>
+            {% for message in messages %}
+                alert("{{ message }}");
+            {% endfor %}
+        </script>
+    {% endif %}
+
+<form action="" method="post" style=" display: flex; justify-content: center; align-items: center;" >
+    {% csrf_token %}
+<a href="{% url 'adminbatchlist' %}" style="position: fixed; top:80px; left: 270px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+arrow_back
+</span></a>
+    <table width="638" height="250" border="0" >
+  <tbody>
+    <tr>
+      <th scope="row">&nbsp;Batch Type</th>
+
+        <td><span class="input" >{{ form.batch_type }}</span></td>
+    </tr>
+    <tr>
+
+      <th scope="row">&nbsp;Batch Name</th>
+       <td> <input type="text" name="{{ form.batchname.name}}" id="textfield" class="input"></td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;Description</th>
+      <td>
+        <textarea name="{{ form.description.name}}" id="textarea" class="input" style="height: 80px;"></textarea></td>
+    </tr>
+    <tr>
+      <th scope="row">Payment per day&nbsp;</th>
+      <td>
+        <input type="number" name="{{ form.paymentperday.name}}" class="input" id="number"></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" class="input" name="submit" id="submit" value="Submit" style="width:150px;"></th>
+      </tr>
+  </tbody>
+</table>
+
+    <!--{{ form.as_p }}-->
+    <!--<input type="submit" name="submit" id="submit" value="Submit">-->
+</form>
+</body>
+<!--</html>-->
+{% endblock %}

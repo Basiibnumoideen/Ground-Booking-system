@@ -1,0 +1,36 @@
+<!--<!doctype html>-->
+<!--<html>-->
+<!--<head>-->
+<!--<meta charset="utf-8">-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" enctype="multipart/form-data" style="text-align:center;">
+    {% csrf_token %}
+    <a href="{% url 'addgallary' %}" style="position: fixed; top:80px; left: 270px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+add
+</span></a><br><br>
+
+  <table width="1050" height="250" border="6" align="center">
+  <tbody>
+    <tr>
+      <th width="50" scope="col">&nbsp;ID</th>
+      <th width="300" scope="col">IMAGE&nbsp;</th>
+      <th width="50" scope="col">&nbsp;</th>
+    </tr>
+    {% for i in list %}
+    <tr>
+      <td>{{ i.id }}</td>
+      <td><img src="{{i.img.url }}" alt="{{ i.img }}" width="200" height="100"></td>
+      <td><a href="{% url 'deleteimage' i.id %}">Delete</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</form>
+</body>
+{% endblock %}
+<!--</html>-->

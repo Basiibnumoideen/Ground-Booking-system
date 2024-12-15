@@ -1,0 +1,82 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+    <style>
+        /* CSS styles for form alignment */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        #form1 {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .back-link {
+            position: fixed;
+            top: 80px;
+            left: 280px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 3px;
+            border-radius: 10px;
+            text-decoration: none;
+            z-index: 999;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+            display: block;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <form id="form1" name="form1" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <a href="{% url 'adminviewprofile' %}" class="back-link">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+
+        <div class="form-group">
+
+            {{ form2.as_p }}
+        </div>
+
+        <div class="form-group">
+
+            {{ form1.as_p }}
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

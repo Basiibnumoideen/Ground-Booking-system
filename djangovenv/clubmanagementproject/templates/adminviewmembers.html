@@ -1,0 +1,52 @@
+<!--<!doctype html>-->
+<!--<html>-->
+<!--<head>-->
+<!--<meta charset="utf-8">-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post"><table width="1150" height="100" border="6">
+    {% csrf_token %}
+  <tbody>
+
+    <tr>
+      <th width="28" scope="col">ID&nbsp;</th>
+      <th width="158.4" scope="col">&nbsp;NAME</th>
+      <th width="218.4" scope="col">ADDRESS&nbsp;</th>
+      <th width="220.8" scope="col">&nbsp;EMAIL</th>
+      <th width="168" scope="col">PHONE NUMBER&nbsp;</th>
+      <th width="132" scope="col">DATE OF BIRTH&nbsp;</th>
+      <th width="90.4" scope="col">&nbsp;GENDER</th>
+      <th width="133.6" scope="col">PHOTO&nbsp;</th>
+      <th width="143.2" scope="col">&nbsp;DATE OF JOIN</th>
+      <th width="54.4" scope="col">&nbsp;</th>
+    </tr>
+      {% for i in list %}
+    <tr>
+
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.address}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.phoneno}}</td>
+      <td>{{i.date_of_birth}}</td>
+      <td>{{i.gender}}</td>
+
+      <td>  {% if i.photo %}
+    <img src="{{ i.photo.url }}" alt="" width="100" height="100"/>
+  {% else %}
+    No photo available
+  {% endif %}</td>
+        <td>{{i.date_of_join}}</td>
+      <td><a href="{% url 'adminviewmemberprofile' i.id %}">VIEW</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</form>
+</body>
+<!--</html>-->
+{% endblock %}

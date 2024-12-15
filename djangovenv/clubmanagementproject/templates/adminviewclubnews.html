@@ -1,0 +1,40 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<!--<!doctype html>-->
+<!--<html>-->
+<!--<head>-->
+<!--<meta charset="utf-8">-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+
+<body>
+<form id="form1" name="form1" method="post">
+    {% csrf_token %}
+  <a href="{% url 'addnews' %}" style="position: fixed; top:80px; left: 270px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+add
+</span></a><br><br>
+
+  <table width="1150" height="100+" border="6">
+  <tbody>
+    <tr>
+      <th width="112.8" scope="col">&nbsp;ID</th>
+      <th width="189.6" scope="col">NEWS&nbsp;</th>
+      <th width="189.6" scope="col">DATE&nbsp;</th>
+      <th width="80.8" scope="col">&nbsp;</th>
+    </tr>
+    {% for i in list %}
+    <tr>
+      <td>{{ i.newsid }}</td>
+      <td>{{ i.news }}</td>
+      <td>{{ i.date }}</td>
+      <td><a href="{% url 'deletenews' i.newsid %}">Delete</a></td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+</form>
+</body>
+<!--</html>-->
+{% endblock %}

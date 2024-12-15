@@ -1,0 +1,41 @@
+<!--<!doctype html>-->
+<!--<html>-->
+<!--<head>-->
+<!--<meta charset="utf-8">-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+	<form method="post" action="">
+        {%csrf_token%}
+      <a href="{% url 'addpurpose' %}" style="position: fixed; top:80px; left: 270px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+add
+</span></a><br><br>
+
+		<table width="1150" height="100" border="5">
+  <tbody>
+    <tr>
+      <th width="50" scope="col">ID&nbsp;</th>
+      <th width="250" scope="col">Name&nbsp;</th>
+      <th width="150" scope="col">&nbsp;Payment Per Day</th>
+      <th width="50" scope="col">&nbsp;</th>
+      <th width="50" scope="col">&nbsp;</th>
+    </tr>
+    {% for i in list %}
+    <tr>
+      <td>{{i.purposeid}}</td>
+      <td>{{i.purpose_name}}</td>
+      <td>{{i.payment_perday}}</td>
+      <td><a href="{% url 'editpurpose' i.purposeid %}">Edit</a></td>
+      <td><a href="{% url 'deletepurpose' i.purposeid %}">Delete</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</table>
+
+	</form>
+<!--</body>-->
+{% endblock %}

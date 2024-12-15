@@ -1,0 +1,25 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+ <a href="{% url 'adminbatchlist' %}" style="position: fixed; top:80px; left: 280px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+arrow_back
+</span></a>
+<form method="post" action="">
+    {% csrf_token %}
+    <table>
+        <tr><th>Bacth</th><td>{{form.batid}}</td></tr>
+        <tr><th>Start Time</th><td>{{form.fromtime}}</td></tr>
+        <tr><th>End Time</th><td>{{form.totime}}</td></tr>
+        <tr><th colspan="2"><input type="submit" name="submit" id="submit" value="UPDATE"></th> </tr>
+    </table>
+</form>
+</body>
+<!--</html>-->
+
+{% endblock %}

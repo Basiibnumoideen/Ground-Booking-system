@@ -1,0 +1,52 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+	<form method="post" action="">
+        {%csrf_token%}
+      <table  border="4" style="align: center;" >
+    <tr>
+      <td>Batch Type</td>
+      <td><select id="batchtype" name="batchtype">
+        <option>ALL</option>
+        {% for j in list1 %}
+        <option value="{{ j.id }}">{{ j.item_name }}</option>
+        {% endfor %}
+      </select></td>
+      <td><input type="submit" value="SEARCH" /></td>
+    </tr>
+  </table></br></br>
+		<table width="1150" border="6">
+  <tbody>
+    <tr>
+      <th scope="col">&nbsp;ID</th>
+      <th scope="col">MEMBERID&nbsp;</th>
+      <th scope="col">BATCHTIMEID&nbsp;</th>
+      <th scope="col">&nbsp;FROMDATE</th>
+      <th scope="col">&nbsp;TODATE</th>
+      <th scope="col">&nbsp;AMOUNT</th>
+
+    </tr>
+    {% for i in list %}
+    <tr>
+      <td>{{i.regid}}</td>
+      <td>{{i.membid}}</td>
+      <td>{{i.batchid}}</td>
+      <td>{{i.fromdate}}</td>
+      <td>{{i.todate}}</td>
+      <td>{{i.amount}}</td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+	</form>
+</body>
+<!--</html>-->
+{% endblock %}

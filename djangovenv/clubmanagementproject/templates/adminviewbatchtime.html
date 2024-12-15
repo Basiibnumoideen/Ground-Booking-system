@@ -1,0 +1,48 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+<body>
+    <form id="form1" name="form1" method="post">
+        {% csrf_token %}
+ <a href="{% url 'adminaddbatchtime' %}" style="position: fixed; top:80px; left: 270px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;  "><span class="material-symbols-outlined">
+add
+</span></a> <a href="{% url 'adminbatchlist' %}" style="position: fixed; top:80px; left: 280px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px; margin-left: 30px;"><span class="material-symbols-outlined">
+arrow_back
+</span></a>
+        <br><br>
+        <table width="1150" height="98" border="6">
+            <tbody>
+                <tr>
+                    <th width="88" scope="col">ID&nbsp;</th>
+                     <th width="88" scope="col">BATCH TYPE</th>
+                    <th width="181.6" scope="col">BATCH NAME&nbsp;</th>
+                    <th width="424.8" scope="col">START TIME&nbsp;</th>
+                    <th width="260" scope="col">END TIME</th>
+                    <th width="83.2" scope="col">&nbsp;</th>
+                    <th width="79.2" scope="col">&nbsp;</th>
+                </tr>
+                {% for batch_time in list1 %}
+                <tr>
+                    <td>{{ batch_time.batchtimeid }}</td>
+                    <td>{{ batch_type }}</td>
+
+                    <td>{{ batch_time.batid }}</td>
+                    <td>{{ batch_time.fromtime }}</td>
+                    <td>{{ batch_time.totime }}</td>
+                    <td><a href="{% url 'deletebatchtime' batch_time.batchtimeid %}">DELETE</a></td>
+                    <td><a href="{% url 'editbatchtime' batch_time.batchtimeid %}">EDIT</a></td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+</body>
+<!--</html>-->
+{% endblock %}

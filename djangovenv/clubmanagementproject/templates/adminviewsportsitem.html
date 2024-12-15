@@ -1,0 +1,33 @@
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post"><table width="1150" height="100" border="6">
+    {% csrf_token %}
+     <a href="{% url 'addsportsitem' %}" style="position: fixed; top:80px; left: 270px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+add
+</span></a><br><br>
+  <tbody>
+
+    <tr>
+      <th width="28" scope="col">ID&nbsp;</th>
+      <th width="158.4" scope="col">ITEM NAME</th>
+      <th width="218.4" scope="col">DESCRIPTION</th>
+      <th width="54.4" scope="col">&nbsp;</th>
+        <th width="54.4" scope="col">&nbsp;</th>
+    </tr>
+      {% for i in list %}
+    <tr>
+
+      <td>{{i.id}}</td>
+      <td>{{i.item_name}}</td>
+      <td>{{i.description}}</td>
+        <td><a href="{% url 'editsportsitem' i.id %}">Edit</a></td>
+        <td><a href="{% url 'deletesportsitem' i.id %}">Delete</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</form>
+</body>
+{% endblock %}

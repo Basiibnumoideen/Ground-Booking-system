@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<form id="form1" name="form1" method="post" enctype="multipart/form-data">
+
+</form><form id="form2" name="form2" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<!--     <a href="{% url 'adminviewprofile' %}" style="position: fixed; top:80px; left: 280px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">-->
+<!--arrow_back-->
+<!--</span></a>-->
+<!--  <table width="299.6" height="183.2" border="1">-->
+<!--  <tbody>-->
+<!--    <tr>-->
+<!--      <td width="164">&nbsp;Club Name</td>-->
+<!--      <td width="42.4">{{form.aname}}</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>&nbsp;Profile Image</td>-->
+<!--      <td>{{form.profileimg}}</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>&nbsp;Admin Name</td>-->
+<!--      <td>{{form.clubadmin}}</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>&nbsp;Contact Number</td>-->
+<!--      <td>{{form.contactno}}</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>&nbsp;Email Id</td>-->
+<!--      <td>{{form.emailid}}</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>&nbsp;Description</td>-->
+<!--      <td>{{form.description}}</td>-->
+<!--    </tr>-->
+<!--     <tr>-->
+<!--      <td>&nbsp;Username</td>-->
+<!--      <td>{{form1.username}}</td>-->
+<!--    </tr>-->
+<!--     <tr>-->
+<!--      <td>Password</td>-->
+<!--      <td>{{form1.password1}}</td>-->
+<!--    </tr>-->
+<!--      <tr>-->
+<!--      <td>Reenter Password</td>-->
+<!--      <td>{{form1.password2}}</td>-->
+<!--    </tr>-->
+<!--	   <tr>-->
+<!--      <td colspan="2"><input type="submit"></td>-->
+
+<!--    </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+  {{ form2.as_p }}
+  {{ form1.as_p }}
+  <input type="submit">
+</form>
+</body>
+</html>

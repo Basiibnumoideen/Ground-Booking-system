@@ -1,0 +1,34 @@
+<!--<!doctype html>-->
+<!--<html>-->
+<!--<head>-->
+<!--<meta charset="utf-8">-->
+<!--<title>Untitled Document</title>-->
+<!--</head>-->
+{% extends 'admin_index.html' %}
+{% block body %}
+<body>
+	<form method="post" action="">
+        {% csrf_token %}
+        <a href="{% url 'viewpurpose' %}" style="position: fixed; top:80px; left: 280px; color:#fff; background-color: rgba(0,0,0,0.7); padding:3px; border-radius:10px;"><span class="material-symbols-outlined">
+arrow_back
+</span></a>
+		<table width="600" height="250" border="0">
+  <tbody>
+    <tr>
+      <th width="196" scope="row">&nbsp;Purpose</th>
+      <td width="27">{{form.purpose_name}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Payment per day&nbsp;</th>
+      <td>{{form.payment_perday}}</td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="submit" id="submit" value="UPDATE"></th>
+      </tr>
+  </tbody>
+</table>
+
+	</form>
+</body>
+<!--</html>-->
+{% endblock %}
