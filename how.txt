@@ -1,0 +1,19 @@
+django 
+
+goto manage.py 
+terminal 
+1 ipcongig -you will get ip (192....etc)
+2 py manage.py runserver (ip :8000) 
+3 login user "lalluallu" 
+        pass:allu
+
+
+flutter 
+goto pubspec.yaml location directory 
+flutter clean (terminal)
+flutter build (terminal)
+run with or without debugging 
+now you can see a window opened 
+paste django ip 
+and login 
+
